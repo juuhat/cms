@@ -3,6 +3,9 @@ html
 		link(rel='stylesheet', href='stylesheets/page.css', type='text/css' )
 	body
 		.site
+			.navbar
+				- each item in navItems
+					a(href= item.Path) #{item.Title}
 			.content
 				h1
 					=title
