@@ -9,7 +9,7 @@ var hash = function (pass, salt) {
 };
 
 exports.getUser = function (username, password, callback) {
-	var sql = "SELECT * FROM user WHERE username='" + username + "' LIMIT 1";
+	var sql = "SELECT * FROM user WHERE username='" + username + "' LIMIT 1;";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -31,28 +31,26 @@ exports.getUser = function (username, password, callback) {
                 callback(null);
             }
         }
-
     });
 
 }
 
 exports.addUser = function (username, password, callback) {
-        
-		var salt = crypto.randomBytes(128).toString('base64');
-        var newHash = hash(password, salt);
 
-        var sql = "INSERT INTO user (username, password, salt) VALUES ('" + username + "', '" + newHash + "', '" + salt + "');";
-        console.log(sql);
+	var salt = crypto.randomBytes(128).toString('base64');
+	var newHash = hash(password, salt);
 
-        connection.query(sql, function (err, result) {
+	var sql = "INSERT INTO user (username, password, salt) VALUES ('" + username + "', '" + newHash + "', '" + salt + "');";
+	console.log(sql);
 
-        	if (err) {
-                console.error(err);
-                callback(null);
-            } else {
-                callback({username: username});
-            }
+	connection.query(sql, function (err, result) {
 
-        });
+		if (err) {
+			console.error(err);
+			callback(null);
+		} else {
+			callback({username: username});
+		}
+	});
 
 };

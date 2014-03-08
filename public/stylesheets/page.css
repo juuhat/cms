@@ -1,1 +1,39 @@
-﻿
+﻿body {
+	background: #eeeeee;
+	background-image:url('../images/bg.png');
+	font: 1em "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.site {
+	width: 80%;
+	background: #FEFEFE;
+	border: solid 1px #143D66;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.content {
+	margin: 1%;
+	border: solid 1px #000000;
+}
+
+.navbar {
+	width: 100%;
+	font: 1.5em Arial;
+	background: #143D66;
+}
+
+.navbar a {
+	color: #eeeeee;
+	padding: 0px 10px;
+	text-decoration:none;
+}
+
+.navbar a:hover {
+	background: #436485;
+}
+
+
+a {
+  color: #00B7FF;
+}
