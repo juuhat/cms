@@ -1,0 +1,16 @@
+html
+	head
+		link(rel='stylesheet', href='stylesheets/login.css', type='text/css' )
+	body
+		.loginBox
+			form(action='/login', method='post')
+				label(for='username') Email:
+				input(name='username', type='text', value='')
+				br
+				br
+				label(for='password') Password:
+				input(name='password', type='password', value='')
+				br
+				br
+				br
+				input(type='submit', value='Log In')

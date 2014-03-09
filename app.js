@@ -29,8 +29,10 @@ if ('development' == app.get('env')) {
 
 //controllers
 var page = require('./controllers/page');
+var manage = require('./controllers/manage');
 
 //routes and assigned controllers
+app.get('/login', manage.login);
 app.get('/:id', page.show);
 
 //create test user
