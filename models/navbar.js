@@ -6,8 +6,8 @@ exports.getNavbar = function (callback) {
 
 	connection.query(sql, function (err, result) {
 
-		if (err) {
-			console.error(err);
+        if (err) {
+            console.error(err);
             throw err;
         }
 

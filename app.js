@@ -32,7 +32,12 @@ var page = require('./controllers/page');
 var manage = require('./controllers/manage');
 
 //routes and assigned controllers
-app.get('/manage', manage.show);
+app.get('/manage', manage.index);
+app.get('/manage/pages', manage.pages);
+app.get('/manage/links', manage.links);
+app.get('/manage/navbar', manage.navbar);
+app.get('/manage/users', manage.users);
+
 app.get('/login', manage.login);
 app.get('/:id', page.show);
 
