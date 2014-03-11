@@ -10,6 +10,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, '/public')));
 app.locals.pretty = true; //show linebreaks in html source
 
 app.use(express.favicon());
@@ -20,7 +21,6 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('secret'));
 app.use(express.session());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
 //development only
 if ('development' == app.get('env')) {
@@ -34,12 +34,13 @@ var manage = require('./controllers/manage');
 //routes and assigned controllers
 app.get('/manage', manage.index);
 app.get('/manage/pages', manage.pages);
+app.get('/manage/pages/:id', manage.editPage);
 app.get('/manage/links', manage.links);
 app.get('/manage/navbar', manage.navbar);
 app.get('/manage/users', manage.users);
 
 app.get('/login', manage.login);
-app.get('/:id', page.show);
+app.get('/:path', page.show);
 
 //create test user
 /*var user = require('./models/user');

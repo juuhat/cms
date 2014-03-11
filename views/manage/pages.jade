@@ -1,4 +1,40 @@
 extends layout
 
 block content
-	| Control Panel Pages
+	h3
+		a(href="/manage") Add page
+	h4
+		|Current pages:
+	table
+		thead
+			tr
+				th
+					|Title
+				th
+					|Author
+				th
+					|Published
+				th
+					|Created
+				th
+					|Updated
+		tbody
+			- each page in pages
+				tr
+					td
+						=page.Title
+					td
+						=page.Username
+					td
+						if page.Published
+							| Yes
+						else
+							| No
+					td
+						|TODO
+					td
+						|TODO
+					td
+						a(href="/manage/pages/" + page.PageID) Edit
+					td
+						|Remove

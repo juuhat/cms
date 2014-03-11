@@ -3,7 +3,7 @@ var navbar = require('../models/navbar');
 
 exports.show = function(req, res) {
 
-	page.getPageByPath(req.params.id, function(pageExists, pageData) {
+	page.getPageByPath(req.params.path, function(pageExists, pageData) {
 
 			navbar.getNavbar(function(navExists, navData) {
 				if (pageExists) {

@@ -35,5 +35,34 @@ body {
 
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
+}
+
+table {
+	width: 70%;
+	background: #436485;
+	border-collapse:collapse;
+}
+
+tr {
+	border: 1px solid black;
+	text-align: center;
+	margin: 10px;
+}
+
+th {
+	color: #FFFFFF;
+	border: 1px solid black;
+	background: #436485;
+}
+
+td {
+	border: 1px solid black;
+}
+
+tr:nth-child(even) {
+	background: #CCC;
+}
+tr:nth-child(odd){ 
+	background: #FFF;
 }

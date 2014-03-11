@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	script(src="../../javascripts/jquery.js")
+	script(src="../../javascripts/markitup.js")
+	link(rel='stylesheet', href='../../stylesheets/markitup.css', type='text/css')
+
+	form(action='/manage/savePage', method='post')
+
+		|Page title:
+		input(type='textarea', value=title)
+
+		br
+		br
+
+		|Published:
+		input(type="checkbox")
+
+		br
+		br
+
+		textarea(id="markItUp", cols="150", rows="20")
+			=content
+		input(type='submit',value='Save')
+
+	script(type='text/javascript').
+		$(function() {
+			$('#markItUp').markItUp(mySettings);
+		});
