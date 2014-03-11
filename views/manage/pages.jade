@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h3
-		a(href="/manage") Add page
+		a(href="/manage/pages/0") Add page
 	h4
 		|Current pages:
 	table
@@ -19,22 +19,23 @@ block content
 				th
 					|Updated
 		tbody
-			- each page in pages
-				tr
-					td
-						=page.Title
-					td
-						=page.Username
-					td
-						if page.Published
-							| Yes
-						else
-							| No
-					td
-						|TODO
-					td
-						|TODO
-					td
-						a(href="/manage/pages/" + page.PageID) Edit
-					td
-						|Remove
+			if pages != null
+				- each page in pages
+					tr
+						td
+							=page.Title
+						td
+							=page.Username
+						td
+							if page.Published
+								| Yes
+							else
+								| No
+						td
+							|TODO
+						td
+							|TODO
+						td
+							a(href="/manage/pages/" + page.PageID) Edit
+						td
+							|Remove

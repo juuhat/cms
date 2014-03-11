@@ -8,7 +8,7 @@ block content
 	form(action='/manage/savePage', method='post')
 
 		|Page title:
-		input(type='textarea', value=title)
+		input(type='textarea', value=title, name='title')
 
 		br
 		br
@@ -19,8 +19,10 @@ block content
 		br
 		br
 
-		textarea(id="markItUp", cols="150", rows="20")
+		textarea(id="markItUp", name='content', cols="150", rows="20")
 			=content
+
+		input(type='hidden', value=id, name='id')
 		input(type='submit',value='Save')
 
 	script(type='text/javascript').

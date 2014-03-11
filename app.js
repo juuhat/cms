@@ -39,6 +39,8 @@ app.get('/manage/links', manage.links);
 app.get('/manage/navbar', manage.navbar);
 app.get('/manage/users', manage.users);
 
+app.post('/manage/savePage', manage.savePage);
+
 app.get('/login', manage.login);
 app.get('/:path', page.show);
 

@@ -64,3 +64,34 @@ exports.getAllPages = function (callback) {
     });
 
 }
+
+exports.updatePage = function(id, title, content, callback) {
+    var sql = "UPDATE page SET Title='" + title + "', Content='" + content + "' WHERE PageID='" + id + "';";
+
+    console.log(sql);
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
+}
+
+exports.newPage = function(title, content, published, username, callback) {
+    var sql = "INSERT INTO page (Title, Content, Published, Username) VALUES ('" + title + "', '" + content + "', '" + published + "', '" + username + "');";
+
+    console.log(sql);
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
+
+}

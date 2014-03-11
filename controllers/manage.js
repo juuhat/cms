@@ -32,9 +32,22 @@ exports.users = function(req, res) {
 exports.editPage = function(req, res) {
 	page.getPageByID(req.params.id, function(pageExists, pageData) {
 		if (pageExists) {
-			res.render('manage/editPage', {title: pageData.Title, content: pageData.Content});
+			res.render('manage/editPage', {title: pageData.Title, content: pageData.Content, id: req.params.id});
 		} else {
-			res.render('manage/editPage', {title: "404", content: "Page not found"});
+			res.render('manage/editPage', {title: "404", content: "Page not found", id: 0});
 		}
 	});
+};
+
+exports.savePage = function(req, res) {
+
+	if (req.body.id > 0) {
+		page.updatePage(req.body.id, req.body.title, req.body.content, function(result) {
+			res.redirect('manage/pages');
+		});
+	} else {
+		page.newPage(req.body.title, req.body.content, 1, "test", function(result) {
+			res.redirect('manage/pages');
+		});
+	}
 };
