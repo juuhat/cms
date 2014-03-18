@@ -1,4 +1,39 @@
 extends layout
 
 block content
-	| Control Panel Links
+	form(action='/manage/addLink', method='post')
+		table
+			thead
+				th
+					|Page to link
+				th
+					|Path
+			tbody
+				th
+					select(name='pageID')
+						- each page in pages
+							option(value=page.PageID) #{page.Title}
+				th
+					input(name='path', type='text')
+				th
+					input(type='submit', value='Add')
+
+	h4
+		|Current links:
+	table
+		thead
+			tr
+				th
+					|Linked page
+				th
+					|Path
+		tbody
+			if links != null
+				- each link in links
+					tr
+						td
+							=link.Title
+						td
+							=link.Path
+						td
+							|Remove

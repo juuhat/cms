@@ -39,8 +39,8 @@ a {
 }
 
 table {
-	width: 70%;
-	background: #436485;
+	/*width: 70%;
+	*/background: #436485;
 	border-collapse:collapse;
 }
 
@@ -65,4 +65,10 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd){ 
 	background: #FFF;
+}
+
+input {
+	font: 1.0em "Lucida Grande", Helvetica, Arial, sans-serif;
+	background: #ffffff;
+	border: 0px solid #000000;
 }

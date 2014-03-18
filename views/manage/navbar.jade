@@ -1,4 +1,24 @@
 extends layout
 
 block content
-	| Control Panel Navbar
+	h3
+		a(href="/manage/pages/0") Add link
+	h4
+		|Navbar items:
+	table
+		thead
+			tr
+				th
+					|Linked page
+				th
+					|Path
+		tbody
+			if navbar != null
+				- each item in navbar
+					tr
+						td
+							=navbar.Title
+						td
+							=navbar.Path
+						td
+							|Remove

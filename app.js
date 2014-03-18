@@ -40,8 +40,11 @@ app.get('/manage/navbar', manage.navbar);
 app.get('/manage/users', manage.users);
 
 app.post('/manage/savePage', manage.savePage);
+app.post('/manage/addLink', manage.addLink);
 
-app.get('/login', manage.login);
+app.get('/login', manage.showLogin);
+app.post('/login', manage.postLogin);
+
 app.get('/:path', page.show);
 
 //create test user
