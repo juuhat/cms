@@ -40,13 +40,13 @@ a {
 
 table {
 	/*width: 70%;
-	*/background: #436485;
-	border-collapse:collapse;
+	background: #436485;
+	*/border-collapse:collapse;
 }
 
 tr {
-	border: 1px solid black;
-	text-align: center;
+	/*border: 1px solid black;
+	*/text-align: center;
 	margin: 10px;
 }
 
@@ -54,10 +54,12 @@ th {
 	color: #FFFFFF;
 	border: 1px solid black;
 	background: #436485;
+	min-width: 150px;
 }
 
 td {
 	border: 1px solid black;
+	min-width: 75px;
 }
 
 tr:nth-child(even) {
@@ -70,5 +72,12 @@ tr:nth-child(odd){
 input {
 	font: 1.0em "Lucida Grande", Helvetica, Arial, sans-serif;
 	background: #ffffff;
-	border: 0px solid #000000;
+	/*border: 1px solid #000000;
+	*/
+}
+
+select {
+    
+
+    width: 150px;
 }

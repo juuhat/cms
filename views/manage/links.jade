@@ -4,20 +4,21 @@ block content
 	form(action='/manage/addLink', method='post')
 		table
 			thead
-				th
-					|Page to link
-				th
-					|Path
+				tr
+					th
+						|Page to link
+					th
+						|Path
 			tbody
-				th
-					select(name='pageID')
-						- each page in pages
-							option(value=page.PageID) #{page.Title}
-				th
-					input(name='path', type='text')
-				th
-					input(type='submit', value='Add')
-
+				tr
+					td
+						select(name='pageID')
+							- each page in pages
+								option(value=page.PageID) #{page.Title}
+					td
+						input(name='path', type='text')
+					td
+						input(type='submit', value='Add')
 	h4
 		|Current links:
 	table
@@ -29,11 +30,13 @@ block content
 					|Path
 		tbody
 			if links != null
-				- each link in links
-					tr
-						td
-							=link.Title
-						td
-							=link.Path
-						td
-							|Remove
+				form(action='/manage/links/remove', method='post')
+					- each link in links
+						tr
+							td
+								=link.Title
+							td
+								=link.Path
+							td
+								button(type='submit', value='Add').
+									Remove
