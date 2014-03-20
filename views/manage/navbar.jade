@@ -1,24 +1,45 @@
 extends layout
 
 block content
-	h3
-		a(href="/manage/pages/0") Add link
-	h4
+	form(action='/manage/addNavbarItem', method='post')
+		table
+			thead
+				tr
+					th
+						|Title
+					th
+						|Place
+					th
+						|PathID
+			tbody
+				tr
+					td
+						input(name='title', type='text')
+					td
+						input(name='place', type='text')
+					td
+						input(name='pathID', type='text')
+					td
+						input(type='submit', value='Add')
 		|Navbar items:
 	table
 		thead
 			tr
 				th
-					|Linked page
+					|Title
 				th
 					|Path
+				th
+					|Place
 		tbody
 			if navbar != null
 				- each item in navbar
 					tr
 						td
-							=navbar.Title
+							=item.Title
 						td
-							=navbar.Path
+							=item.Path
+						td
+							=item.Place
 						td
 							|Remove

@@ -47,6 +47,12 @@ exports.navbar = function(req, res) {
 	});
 };
 
+exports.addNavbarItem = function(req, res) {
+	navbar.addNavbarItem(req.body.title, req.body.place, req.body.pathID, function(result) {
+		res.redirect('manage/navbar');
+	});
+};
+
 exports.users = function(req, res) {
 	res.render('manage/users');
 };
