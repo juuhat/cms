@@ -1,6 +1,9 @@
 extends layout
 
 block content
+	script(src="../javascripts/jquery.js")
+	script(src="../javascripts/jquery-ui.js")
+	link(rel='stylesheet', href='../../stylesheets/jquery-ui.css', type='text/css')
 	form(action='/manage/addNavbarItem', method='post')
 		table
 			thead
@@ -8,38 +11,45 @@ block content
 					th
 						|Title
 					th
-						|Place
-					th
 						|PathID
 			tbody
 				tr
 					td
 						input(name='title', type='text')
 					td
-						input(name='place', type='text')
-					td
 						input(name='pathID', type='text')
 					td
 						input(type='submit', value='Add')
-		|Navbar items:
-	table
-		thead
-			tr
-				th
-					|Title
-				th
-					|Path
-				th
-					|Place
-		tbody
-			if navbar != null
-				- each item in navbar
-					tr
-						td
-							=item.Title
-						td
-							=item.Path
-						td
-							=item.Place
-						td
-							|Remove
+	|Navbar items:
+
+	ul(id="sortable")
+		if navbar != null
+			- each item in navbar
+				li(class="ui-state-default", id=item.NavbarID)
+					=item.Title
+
+	input(type='button', value='Save', onclick='saveOrder();')
+
+	script(type='text/javascript').
+		$(function() {
+			$( "#sortable" ).sortable();
+			$( "#sortable" ).disableSelection();
+		});
+
+		function saveOrder() {
+			var itemOrder = new Array();
+
+			$("#sortable li").each(function(i) {
+				itemOrder.push($(this).attr('id'))
+			});
+
+			$.ajax({
+				type: 'POST',
+				url: '/manage/saveNavbar',
+				data: { order: itemOrder }
+			}).done(function(response) {
+				alert(response);
+			}).fail(function() {
+				alert('Saving failed');
+			});
+		}

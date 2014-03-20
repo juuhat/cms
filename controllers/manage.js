@@ -48,9 +48,22 @@ exports.navbar = function(req, res) {
 };
 
 exports.addNavbarItem = function(req, res) {
-	navbar.addNavbarItem(req.body.title, req.body.place, req.body.pathID, function(result) {
+	navbar.addNavbarItem(req.body.title, req.body.pathID, function(result) {
 		res.redirect('manage/navbar');
 	});
+};
+
+exports.saveNavbar = function(req, res) {
+	var items = req.body.order;
+	console.log(items);
+	for (var i = 0; i < items.length; i++) {
+		navbar.saveNavbarItem(items[i], i, function(result) {
+			console.log(result);
+	});
+	}
+
+	res.send("Items saved");
+
 };
 
 exports.users = function(req, res) {
