@@ -1,42 +1,46 @@
 extends layout
 
 block content
-	form(action='/manage/addLink', method='post')
+	.contentItem
+		.contentItemHeader
+			|Add new link
+		form(action='/manage/addLink', method='post')
+			table
+				thead
+					tr
+						th
+							|Page to link
+						th
+							|Path
+				tbody
+					tr
+						td
+							select(name='pageID')
+								- each page in pages
+									option(value=page.PageID) #{page.Title}
+						td
+							input(name='path', type='text')
+						td
+							input(type='submit', value='Add')
+	.contentItem
+		.contentItemHeader
+			|Current links
 		table
 			thead
 				tr
 					th
-						|Page to link
+						|Linked page
 					th
 						|Path
 			tbody
-				tr
-					td
-						select(name='pageID')
-							- each page in pages
-								option(value=page.PageID) #{page.Title}
-					td
-						input(name='path', type='text')
-					td
-						input(type='submit', value='Add')
-	h4
-		|Current links:
-	table
-		thead
-			tr
-				th
-					|Linked page
-				th
-					|Path
-		tbody
-			if links != null
-				form(action='/manage/links/remove', method='post')
-					- each link in links
-						tr
-							td
-								=link.Title
-							td
-								=link.Path
-							td
-								button(type='submit', value='Add').
-									Remove
+				if links != null
+					form(action='/manage/links/remove', method='post')
+						- each link in links
+							tr
+								td
+									=link.Title
+								td
+									=link.Path
+								td
+									button(type='submit', name="pathID", value=link.PathID).
+										Remove

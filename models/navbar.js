@@ -55,3 +55,16 @@ exports.saveNavbarItem = function(navbarID, place, callback) {
 
 }
 
+exports.removeNavbarItem = function(navbarID, callback) {
+    var sql = "DELETE FROM navbar WHERE NavbarID=" + navbarID + ";";
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
+
+}

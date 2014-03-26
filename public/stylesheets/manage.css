@@ -17,6 +17,21 @@ body {
 	/*border: solid 1px #000000;*/
 }
 
+.contentItem {
+	/*border: solid 1px #000000;*/
+	/*background: #898989;*/
+	/*background: #e6e6e6;
+	*/margin-bottom: 40px;
+}
+
+.contentItemHeader {
+	margin-bottom: 10px;
+	background: #D9D9D9;
+	text-align: center;
+	padding: 0;
+	font: 1.5em Arial;
+}
+
 .navbar {
 	width: 100%;
 	font: 1.5em Arial;

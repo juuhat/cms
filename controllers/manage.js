@@ -37,7 +37,13 @@ exports.links = function(req, res) {
 
 exports.addLink = function(req, res) {
 	link.newLink(req.body.path, req.body.pageID, function(result) {
-			res.redirect('manage/links');
+		res.redirect('manage/links');
+	});
+};
+
+exports.removeLink = function(req, res) {
+	link.removeLink(req.body.pathID, function(result) {
+		res.redirect('manage/links');
 	});
 }
 

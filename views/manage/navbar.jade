@@ -4,35 +4,41 @@ block content
 	script(src="../javascripts/jquery.js")
 	script(src="../javascripts/jquery-ui.js")
 	link(rel='stylesheet', href='../../stylesheets/jquery-ui.css', type='text/css')
-	form(action='/manage/addNavbarItem', method='post')
-		table
-			thead
-				tr
-					th
-						|Title
-					th
-						|PathID
-			tbody
-				tr
-					td
-						input(name='title', type='text')
-					td
-						input(name='pathID', type='text')
-					td
-						input(type='submit', value='Add')
-	|Navbar items:
+	.contentItem
+		.contentItemHeader
+			|Add new item
+		form(action='/manage/addNavbarItem', method='post')
+			table
+				thead
+					tr
+						th
+							|Title
+						th
+							|PathID
+				tbody
+					tr
+						td
+							input(name='title', type='text')
+						td
+							input(name='pathID', type='text')
+						td
+							input(type='submit', value='Add')
+	.contentItem
+		.contentItemHeader
+			|Navbar items
+		ul(id="sortable")
+			if navbar != null
+				- each item in navbar
+					li(class="ui-state-default", id=item.NavbarID)
+						=item.Title
 
-	ul(id="sortable")
-		if navbar != null
-			- each item in navbar
-				li(class="ui-state-default", id=item.NavbarID)
-					=item.Title
-
-	input(type='button', value='Save', onclick='saveOrder();')
+		input(type='button', value='Save', onclick='saveOrder();')
 
 	script(type='text/javascript').
 		$(function() {
-			$( "#sortable" ).sortable();
+			$( "#sortable" ).sortable({
+				placeholder: "ui-state-highlight"
+			});
 			$( "#sortable" ).disableSelection();
 		});
 

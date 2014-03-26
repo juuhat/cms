@@ -10,9 +10,10 @@
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
 	border: 1px solid #d3d3d3;
-	background: #e6e6e6;
+	/*background: #e6e6e6;*/
+	background: #436485;
 	font-weight: normal;
-	color: #555555;
+	color: #FFFFFF;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -60,3 +61,4 @@
 #sortable { list-style-type: none; margin: 0; padding: 0; width: 500px; }
 #sortable li { margin: 0 3px 3px 0px; padding: 0.4em; padding-left: 1.5em; font-size: 1.0em; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }

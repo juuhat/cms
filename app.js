@@ -43,6 +43,7 @@ app.post('/manage/savePage', manage.savePage);
 app.post('/manage/addLink', manage.addLink);
 app.post('/manage/addNavbarItem', manage.addNavbarItem);
 app.post('/manage/saveNavbar', manage.saveNavbar);
+app.post('/manage/links/remove', manage.removeLink);
 
 app.get('/login', manage.showLogin);
 app.post('/login', manage.postLogin);
