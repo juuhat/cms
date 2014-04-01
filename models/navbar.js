@@ -39,7 +39,8 @@ exports.addNavbarItem = function(title, pathID, callback) {
 
 }
 
-exports.saveNavbarItem = function(navbarID, place, callback) {
+exports.saveNavbarItemPlace = function(navbarID, place, callback) {
+    //var sql = "UPDATE navbar SET Place='" + place + ", Title='" + title + "' WHERE NavbarID='" + navbarID + "';";
     var sql = "UPDATE navbar SET Place='" + place + "' WHERE NavbarID='" + navbarID + "';";
 
     console.log(sql);
@@ -53,6 +54,21 @@ exports.saveNavbarItem = function(navbarID, place, callback) {
         }
     });
 
+}
+
+exports.saveNavbarItemContent = function(navbarID, title, path, callback) {
+    var sql = "UPDATE navbar SET Title='" + title + "', Path='" + path + "' Where NavbarID='" + navbarID + "';";
+
+    console.log(sql);
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
 }
 
 exports.removeNavbarItem = function(navbarID, callback) {

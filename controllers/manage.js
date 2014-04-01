@@ -63,14 +63,18 @@ exports.saveNavbar = function(req, res) {
 	var items = req.body.order;
 	console.log(items);
 	for (var i = 0; i < items.length; i++) {
-		navbar.saveNavbarItem(items[i], i, function(result) {
+		navbar.saveNavbarItemPlace(items[i], i, function(result) {
 			console.log(result);
-	});
+		});
 	}
 
 	res.send("Items saved");
 
 };
+
+exports.saveNavbarItem = function(req, res) {
+
+}
 
 exports.users = function(req, res) {
 	res.render('manage/users');

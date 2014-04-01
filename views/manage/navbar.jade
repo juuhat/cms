@@ -30,8 +30,10 @@ block content
 			if navbar != null
 				- each item in navbar
 					li(class="ui-state-default", id=item.NavbarID)
-						=item.Title
-
+						form
+							input(name='title', type='text' value=item.Title)
+							input(name='path', type='text' value=item.Path)
+		br
 		input(type='button', value='Save', onclick='saveOrder();')
 
 	script(type='text/javascript').
@@ -39,7 +41,7 @@ block content
 			$( "#sortable" ).sortable({
 				placeholder: "ui-state-highlight"
 			});
-			$( "#sortable" ).disableSelection();
+			//$( "#sortable" ).disableSelection();
 		});
 
 		function saveOrder() {
