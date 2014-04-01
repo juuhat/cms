@@ -95,3 +95,20 @@ exports.newPage = function(title, content, published, username, callback) {
     });
 
 }
+
+exports.removePage = function(id, callback) {
+
+    var sql = "DELETE FROM page WHERE PageID='" + id + "';";
+
+    console.log(sql);
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
+
+}

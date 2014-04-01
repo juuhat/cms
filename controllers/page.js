@@ -2,8 +2,8 @@
 var navbar = require('../models/navbar');
 
 exports.show = function(req, res) {
-
-	page.getPageByPath(req.params.path, function(pageExists, pageData) {
+	console.log("path: " + req.params);
+	page.getPageByPath(req.params, function(pageExists, pageData) {
 
 			navbar.getNavbar(function(navExists, navData) {
 				if (pageExists) {

@@ -102,3 +102,19 @@ exports.savePage = function(req, res) {
 		});
 	}
 };
+
+exports.removePage = function(req, res) {
+
+	page.removePage(req.body.id, function(result) {
+		res.redirect('/manage/pages');
+	});
+
+}
+
+exports.removeNavbarItem  = function(req, res) {
+
+	navbar.removeNavbarItem(req.body.id, function(result) {
+		res.redirect('/manage/navbar');
+	});
+
+}

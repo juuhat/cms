@@ -12,16 +12,17 @@ block content
 							|Page to link
 						th
 							|Path
-				tbody
-					tr
-						td
-							select(name='pageID')
-								- each page in pages
-									option(value=page.PageID) #{page.Title}
-						td
-							input(name='path', type='text')
-						td
-							input(type='submit', value='Add')
+				if pages != null
+					tbody
+						tr
+							td
+								select(name='pageID')
+									- each page in pages
+										option(value=page.PageID) #{page.Title}
+							td
+								input(name='path', type='text')
+							td
+								input(type='submit', value='Add')
 	.contentItem
 		.contentItemHeader
 			|Current links

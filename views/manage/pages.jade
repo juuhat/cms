@@ -23,22 +23,24 @@ block content
 						|Updated
 			tbody
 				if pages != null
-					- each page in pages
-						tr
-							td
-								=page.Title
-							td
-								=page.Username
-							td
-								if page.Published
-									| Yes
-								else
-									| No
-							td
-								=page.Created
-							td
-								=page.Updated
-							td
-								a(href="/manage/pages/" + page.PageID) Edit
-							td
-								|Remove
+					form(action='/manage/pages/remove', method='post')
+						- each page in pages
+							tr
+								td
+									=page.Title
+								td
+									=page.Username
+								td
+									if page.Published
+										| Yes
+									else
+										| No
+								td
+									=page.Created
+								td
+									=page.Updated
+								td
+									a(href="/manage/pages/" + page.PageID) Edit
+								td
+									button(type='submit', name="id", value=page.PageID).
+										Remove

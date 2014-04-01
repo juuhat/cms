@@ -1,9 +1,9 @@
 extends layout
 
 block content
-	script(src="../javascripts/jquery.js")
-	script(src="../javascripts/jquery-ui.js")
-	link(rel='stylesheet', href='../../stylesheets/jquery-ui.css', type='text/css')
+	script(src="/static/javascripts/jquery.js")
+	script(src="/static/javascripts/jquery-ui.js")
+	link(rel='stylesheet', href='/static/stylesheets/jquery-ui.css', type='text/css')
 	.contentItem
 		.contentItemHeader
 			|Add new item
@@ -30,9 +30,11 @@ block content
 			if navbar != null
 				- each item in navbar
 					li(class="ui-state-default", id=item.NavbarID)
-						form
+						form(action='/manage/navbar/remove', method='post')
 							input(name='title', type='text' value=item.Title)
 							input(name='path', type='text' value=item.Path)
+							button(type='submit', name='id', value=item.NavbarID).
+								Remove
 		br
 		input(type='button', value='Save', onclick='saveOrder();')
 

@@ -10,7 +10,10 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(express.static(path.join(__dirname, '/public')));
+
+//mount public directory to path /static
+app.use('/static', express.static(__dirname + '/public'));
+
 app.locals.pretty = true; //show linebreaks in html source
 
 app.use(express.favicon());
@@ -35,8 +38,10 @@ var manage = require('./controllers/manage');
 app.get('/manage', manage.index);
 app.get('/manage/pages', manage.pages);
 app.get('/manage/pages/:id', manage.editPage);
+app.post('/manage/pages/remove', manage.removePage);
 app.get('/manage/links', manage.links);
 app.get('/manage/navbar', manage.navbar);
+app.post('/manage/navbar/remove', manage.removeNavbarItem);
 app.get('/manage/users', manage.users);
 
 app.post('/manage/savePage', manage.savePage);
@@ -48,7 +53,8 @@ app.post('/manage/links/remove', manage.removeLink);
 app.get('/login', manage.showLogin);
 app.post('/login', manage.postLogin);
 
-app.get('/:path', page.show);
+//app.get('/:path', page.show);
+app.get('*', page.show);
 
 //create test user
 /*var user = require('./models/user');
