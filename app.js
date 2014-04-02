@@ -35,6 +35,21 @@ var page = require('./controllers/page');
 var manage = require('./controllers/manage');
 var login = require('./controllers/login');
 
+//filters
+app.get('/manage', manageFilter());
+app.post('/manage', manageFilter());
+app.get('/manage*', manageFilter());
+app.post('/manage*', manageFilter());
+
+function manageFilter() {
+	return function(req, res, next) {
+		if (req.session.user != null)
+			next();
+		else
+			res.send(403);
+	}
+}
+
 //routes and assigned controllers
 app.get('/manage', manage.index);
 app.get('/manage/pages', manage.pages);
