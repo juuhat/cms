@@ -34,20 +34,40 @@ body {
 
 .navbar {
 	width: 100%;
+	margin: 0;
+	padding: 0;
 	font: 1.5em Arial;
 	background: #143D66;
 }
 
+.navbar:after {
+	display: block;
+	content: " ";
+	clear: both;
+}
+
 .navbar a {
 	color: #eeeeee;
-	padding: 0px 10px;
 	text-decoration:none;
 }
 
-.navbar a:hover {
-	background: #436485;
+.navTab,
+.logTab {
+	color: #eeeeee;
+	margin: 0;
+	padding: 5px 15px;
+	float: left;
 }
 
+.navTab:hover,
+.logTab:hover {
+	background: #436485;
+	color: #888;
+}
+
+.logTab {
+	float: right;
+}
 
 a {
 	color: #00B7FF;

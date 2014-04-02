@@ -2,15 +2,6 @@ var page = require('../models/page');
 var navbar = require('../models/navbar');
 var link = require('../models/link');
 
-exports.showLogin = function(req, res) {
-	res.render('login');
-};
-
-exports.postLogin = function(req, res) {
-	//TODO check user authentication
-	res.redirect('/manage');
-}
-
 exports.index = function(req, res) {
 	res.render('manage/index');
 };

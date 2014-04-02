@@ -4,10 +4,17 @@ html
 	body
 		.site
 			.navbar
-				a(href="/manage") Index
-				a(href="/manage/pages") Pages
-				a(href="/manage/links") Links
-				a(href="/manage/navbar") Navbar
-				a(href="/manage/users") Users
+				.navTab
+					a(href="/manage") Index
+				.navTab
+					a(href="/manage/pages") Pages
+				.navTab
+					a(href="/manage/links") Links
+				.navTab
+					a(href="/manage/navbar") Navbar
+				.navTab
+					a(href="/manage/users") Users
+				.logTab
+					a(href="/manage/users") Logout
 			.content
 				block content

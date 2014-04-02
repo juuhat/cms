@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 //controllers
 var page = require('./controllers/page');
 var manage = require('./controllers/manage');
+var login = require('./controllers/login');
 
 //routes and assigned controllers
 app.get('/manage', manage.index);
@@ -50,8 +51,8 @@ app.post('/manage/addNavbarItem', manage.addNavbarItem);
 app.post('/manage/saveNavbar', manage.saveNavbar);
 app.post('/manage/links/remove', manage.removeLink);
 
-app.get('/login', manage.showLogin);
-app.post('/login', manage.postLogin);
+app.get('/login', login.showLogin);
+app.post('/login', login.postLogin);
 
 //app.get('/:path', page.show);
 app.get('*', page.show);
