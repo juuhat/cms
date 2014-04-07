@@ -74,11 +74,15 @@ exports.authAttempt = function (username, password, callback) {
             if (bcrypt.compareSync(password, row.Password)) {
 
             	//create user
-                var user = {};
+                var user = {
+                    username : row.Username,
+                    email : "test@example.com"
+                };
+                /*var user = new Object();
                 user.username = row.Username;
                 user.email   = "test@example.com";
-
-            	callback({user: user});
+*/
+            	callback(user);
             } else {
                 callback(null);
             }

@@ -1,20 +1,14 @@
 extends layout
 
 block content
-	script(src="../../javascripts/jquery.js")
-	script(src="../../javascripts/markitup.js")
-	link(rel='stylesheet', href='../../stylesheets/markitup.css', type='text/css')
+	script(src="/static/javascripts/jquery.js")
+	script(src="/static/javascripts/markitup.js")
+	link(rel='stylesheet', href='/static/stylesheets/markitup.css', type='text/css')
 
 	form(action='/manage/savePage', method='post')
 
 		|Page title:
 		input(type='textarea', value=title, name='title')
-
-		br
-		br
-
-		|Published:
-		input(type="checkbox")
 
 		br
 		br

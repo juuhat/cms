@@ -3,6 +3,7 @@ var navbar = require('../models/navbar');
 var link = require('../models/link');
 
 exports.index = function(req, res) {
+	console.log(req.session.user.username);
 	res.render('manage/index');
 };
 
@@ -45,7 +46,7 @@ exports.navbar = function(req, res) {
 };
 
 exports.addNavbarItem = function(req, res) {
-	navbar.addNavbarItem(req.body.title, req.body.pathID, function(result) {
+	navbar.addNavbarItem(req.body.title, req.body.url, function(result) {
 		res.redirect('manage/navbar');
 	});
 };
@@ -88,7 +89,7 @@ exports.savePage = function(req, res) {
 			res.redirect('manage/pages');
 		});
 	} else {
-		page.newPage(req.body.title, req.body.content, 1, "test", function(result) {
+		page.newPage(req.body.title, req.body.content, req.session.user.username, function(result) {
 			res.redirect('manage/pages');
 		});
 	}

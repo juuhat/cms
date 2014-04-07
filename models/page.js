@@ -1,6 +1,6 @@
 ﻿var connection = require('../controllers/database').connection;
 
-//search page with path/link
+//search page with path
 exports.getPageByPath = function (path, callback) {
 	var sql = "SELECT * FROM link INNER JOIN page ON link.PageID=page.PageID WHERE link.Path='" + path + "';";
 	console.log(sql);
@@ -80,8 +80,8 @@ exports.updatePage = function(id, title, content, callback) {
     });
 }
 
-exports.newPage = function(title, content, published, username, callback) {
-    var sql = "INSERT INTO page (Title, Content, Published, Username) VALUES ('" + title + "', '" + content + "', '" + published + "', '" + username + "');";
+exports.newPage = function(title, content, username, callback) {
+    var sql = "INSERT INTO page (Title, Content, Username) VALUES ('" + title + "', '" + content + "', '" + username + "');";
 
     console.log(sql);
 
@@ -111,4 +111,20 @@ exports.removePage = function(id, callback) {
         }
     });
 
+}
+
+
+exports.updatePageLoads = function(id, callback) {
+    var sql = "UPDATE page SET Loads=Loads+1 WHERE PageID='" + id + "';";
+
+    console.log(sql);
+
+    connection.query(sql, function (err, result) {
+        if (err) {
+            console.error(err);
+            callback(null);
+        } else {
+            callback(null);
+        }
+    });
 }

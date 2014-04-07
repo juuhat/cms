@@ -1,7 +1,7 @@
 var connection = require('../controllers/database').connection;
 
 exports.getNavbar = function (callback) {
-	var sql = "SELECT navbar.Title, link.Path, navbar.Place, navbar.NavbarID FROM navbar INNER JOIN link ON navbar.PathID = link.PathID ORDER BY navbar.Place;";
+	var sql = "SELECT navbar.Title, navbar.Url, navbar.Place, navbar.NavbarID FROM navbar ORDER BY navbar.Place;";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -23,8 +23,8 @@ exports.getNavbar = function (callback) {
 
 }
 
-exports.addNavbarItem = function(title, pathID, callback) {
-    var sql = "INSERT INTO navbar (Place, Title, PathID) SELECT MAX(Place) + 1, '" + title + "', '" + pathID + "' FROM navbar;";
+exports.addNavbarItem = function(title, url, callback) {
+    var sql = "INSERT INTO navbar (Place, Title, Url) SELECT MAX(Place) + 1, '" + title + "', '" + url + "' FROM navbar;";
 
     console.log(sql);
 
@@ -56,8 +56,8 @@ exports.saveNavbarItemPlace = function(navbarID, place, callback) {
 
 }
 
-exports.saveNavbarItemContent = function(navbarID, title, path, callback) {
-    var sql = "UPDATE navbar SET Title='" + title + "', Path='" + path + "' Where NavbarID='" + navbarID + "';";
+exports.saveNavbarItemContent = function(navbarID, title, url, callback) {
+    var sql = "UPDATE navbar SET Title='" + title + "', Url='" + url + "' Where NavbarID='" + navbarID + "';";
 
     console.log(sql);
 

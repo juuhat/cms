@@ -2,9 +2,11 @@ html
 	head
 		link(rel='stylesheet', href='/static/stylesheets/login.css', type='text/css' )
 	body
+		.infoBox
+			=info
 		.loginBox
 			form(action='/login', method='post')
-				label(for='username') Email:
+				label(for='username') Username:
 				input(name='username', type='text', value='')
 				br
 				br

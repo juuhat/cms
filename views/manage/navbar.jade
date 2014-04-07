@@ -14,13 +14,13 @@ block content
 						th
 							|Title
 						th
-							|PathID
+							|Url
 				tbody
 					tr
 						td
 							input(name='title', type='text')
 						td
-							input(name='pathID', type='text')
+							input(name='url', type='text')
 						td
 							input(type='submit', value='Add')
 	.contentItem
@@ -32,7 +32,7 @@ block content
 					li(class="ui-state-default", id=item.NavbarID)
 						form(action='/manage/navbar/remove', method='post')
 							input(name='title', type='text' value=item.Title)
-							input(name='path', type='text' value=item.Path)
+							input(name='url', type='text' value=item.Url)
 							button(type='submit', name='id', value=item.NavbarID).
 								Remove
 		br

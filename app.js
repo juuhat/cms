@@ -68,8 +68,8 @@ app.post('/manage/links/remove', manage.removeLink);
 
 app.get('/login', login.showLogin);
 app.post('/login', login.postLogin);
+app.get('/logout', login.showLogout);
 
-//app.get('/:path', page.show);
 app.get('*', page.show);
 
 //create test user
