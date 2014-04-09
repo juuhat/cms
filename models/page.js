@@ -25,7 +25,7 @@ exports.getPageByPath = function (path, callback) {
 
 exports.getPageByID = function (id, callback) {
     var sql = "SELECT * FROM page WHERE PageID='" + id + "';";
-
+    console.log(sql);
     connection.query(sql, function (err, result) {
 
         if (err) {
@@ -45,7 +45,7 @@ exports.getPageByID = function (id, callback) {
 }
 
 exports.getAllPages = function (callback) {
-    var sql = "SELECT * FROM page;";
+    var sql = "SELECT * FROM page INNER JOIN user ON page.UserID=user.UserID;";
 
     connection.query(sql, function (err, result) {
 
@@ -80,8 +80,8 @@ exports.updatePage = function(id, title, content, callback) {
     });
 }
 
-exports.newPage = function(title, content, username, callback) {
-    var sql = "INSERT INTO page (Title, Content, Username) VALUES ('" + title + "', '" + content + "', '" + username + "');";
+exports.newPage = function(title, content, userId, callback) {
+    var sql = "INSERT INTO page (Title, Content, UserID, Created) VALUES ('" + title + "', '" + content + "', '" + userId + "', CURRENT_TIMESTAMP);";
 
     console.log(sql);
 

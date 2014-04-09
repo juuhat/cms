@@ -1,13 +1,13 @@
 html
 	head
 		link(rel='stylesheet', href='/static/stylesheets/page.css', type='text/css' )
+		title
+			=title
 	body
 		.site
 			.navbar
 				- each item in navItems
 					a(href=item.Url) #{item.Title}
 			.content
-				h1
-					=title
 				.text
 					!=text

@@ -69,7 +69,9 @@ exports.saveNavbarItem = function(req, res) {
 }
 
 exports.users = function(req, res) {
-	res.render('manage/users');
+	page.getAllPages(function(usersExists, usersData) {
+		res.render('manage/users', {users: usersData});
+	});
 };
 
 exports.editPage = function(req, res) {
@@ -77,7 +79,7 @@ exports.editPage = function(req, res) {
 		if (pageExists) {
 			res.render('manage/editPage', {title: pageData.Title, content: pageData.Content, id: req.params.id});
 		} else {
-			res.render('manage/editPage', {title: "404", content: "Page not found", id: 0});
+			res.render('manage/editPage', {title: "New page", content: "Content here", id: 0});
 		}
 	});
 };
@@ -89,7 +91,7 @@ exports.savePage = function(req, res) {
 			res.redirect('manage/pages');
 		});
 	} else {
-		page.newPage(req.body.title, req.body.content, req.session.user.username, function(result) {
+		page.newPage(req.body.title, req.body.content, req.session.user.userID, function(result) {
 			res.redirect('manage/pages');
 		});
 	}

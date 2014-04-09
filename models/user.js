@@ -73,15 +73,13 @@ exports.authAttempt = function (username, password, callback) {
 
             if (bcrypt.compareSync(password, row.Password)) {
 
-            	//create user
+            	//create user to be saved in session
                 var user = {
+                    userID : row.UserID,
                     username : row.Username,
                     email : "test@example.com"
                 };
-                /*var user = new Object();
-                user.username = row.Username;
-                user.email   = "test@example.com";
-*/
+
             	callback(user);
             } else {
                 callback(null);
@@ -90,6 +88,27 @@ exports.authAttempt = function (username, password, callback) {
         } else {
             callback(null);
         }
+    });
+
+}
+
+exports.getAllUsers = function (callback) {
+    var sql = "SELECT * FROM user;";
+
+    connection.query(sql, function (err, result) {
+
+        if (err) {
+            console.error(err);
+            throw err;
+        }
+
+        //check if users exist
+        if (result.length > 0) {
+            callback(true, result);
+        } else {
+            callback(false, null);
+        }
+
     });
 
 }

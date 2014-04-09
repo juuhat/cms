@@ -1,4 +1,21 @@
 extends layout
 
 block content
-	| Control Panel Users
+	.contentItem
+		.contentItemHeader
+			|Users
+		table
+			thead
+				tr
+					th
+						|Username
+					th
+						|Email
+			tbody
+				if users != null
+						- each user in users
+							tr
+								td
+									=user.Username
+								td
+									=user.Email
