@@ -6,29 +6,24 @@ body {
 
 .site {
 	width: 80%;
-	background: #FEFEFE;
-	border: solid 1px #143D66;
+	background: #F5F5F5;
+	border: solid 2px #383838;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .content {
 	margin: 1%;
-	/*border: solid 1px #000000;*/
 }
 
 .contentItem {
-	/*border: solid 1px #000000;*/
-	/*background: #898989;*/
-	/*background: #e6e6e6;
-	*/margin-bottom: 40px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #383838;
 }
 
 .contentItemHeader {
-	margin-bottom: 10px;
-	background: #D9D9D9;
-	text-align: center;
-	padding: 0;
+	margin-top: 20px;
+	padding-bottom: 10px;
 	font: 1.5em Arial;
 }
 
@@ -37,7 +32,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font: 1.5em Arial;
-	background: #143D66;
+	background: #383838;
 }
 
 .navbar:after {
@@ -47,13 +42,16 @@ body {
 }
 
 .navbar a {
-	color: #eeeeee;
+	color: #F5F5F5;
+	text-decoration:none;
+}
+.navbar a:hover {
+	color: #383838;
 	text-decoration:none;
 }
 
 .navTab,
 .logTab {
-	color: #eeeeee;
 	margin: 0;
 	padding: 5px 15px;
 	float: left;
@@ -61,8 +59,7 @@ body {
 
 .navTab:hover,
 .logTab:hover {
-	background: #436485;
-	color: #888;
+	background: #D8A412;
 }
 
 .logTab {
@@ -70,31 +67,33 @@ body {
 }
 
 a {
-	color: #00B7FF;
+	color: #D8A412;
 }
 
 table {
-	/*width: 70%;
-	background: #436485;
-	*/border-collapse:collapse;
+	border-collapse: collapse;
+	padding: 0px;
+	background: #383838;
+	border: 1px solid black
 }
 
 tr {
-	/*border: 1px solid black;
-	*/text-align: center;
+	text-align: center;
 	margin: 10px;
 }
 
 th {
 	color: #FFFFFF;
-	border: 1px solid black;
-	background: #436485;
+
+	background: #383838;
 	min-width: 150px;
+	padding: 10px;
 }
 
 td {
 	border: 1px solid black;
 	min-width: 75px;
+	padding: 5px;
 }
 
 tr:nth-child(even) {
@@ -104,15 +103,25 @@ tr:nth-child(odd){
 	background: #FFF;
 }
 
+form {
+    display: inline;
+}
+
 input {
 	font: 1.0em "Lucida Grande", Helvetica, Arial, sans-serif;
 	background: #ffffff;
-	/*border: 1px solid #000000;
-	*/
+	border: 1px solid #666;
+}
+
+button {
+	border: 1px solid #666;
+}
+
+button:hover {
+	border: 1px solid #fff;
 }
 
 select {
-    
-
     width: 150px;
+    border: 1px solid #666;
 }
