@@ -29,7 +29,9 @@ block content
 								td
 									=page.Username
 								td
-									=page.Created
+									script(type='text/javascript').
+										var created= new Date("#{page.Created}");
+										document.write(created)
 								td
 									=page.Updated
 								td

@@ -66,7 +66,7 @@ exports.getAllPages = function (callback) {
 }
 
 exports.updatePage = function(id, title, content, callback) {
-    var sql = "UPDATE page SET Title='" + title + "', Content='" + content + "' WHERE PageID='" + id + "';";
+    var sql = "UPDATE page SET Title='" + title + "', Content='" + content + "', Updated=CURRENT_TIMESTAMP WHERE PageID='" + id + "';";
 
     console.log(sql);
 
@@ -81,7 +81,7 @@ exports.updatePage = function(id, title, content, callback) {
 }
 
 exports.newPage = function(title, content, userId, callback) {
-    var sql = "INSERT INTO page (Title, Content, UserID, Created) VALUES ('" + title + "', '" + content + "', '" + userId + "', CURRENT_TIMESTAMP);";
+    var sql = "INSERT INTO page (Title, Content, UserID, Created, Updated) VALUES ('" + title + "', '" + content + "', '" + userId + "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
 
     console.log(sql);
 
