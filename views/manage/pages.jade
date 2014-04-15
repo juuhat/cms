@@ -1,6 +1,11 @@
 extends layout
 
 block content
+	script(type='text/javascript').
+		function formatTimestamp(ts) {
+			return ts.getDate() + "." + ts.getMonth() + "." + ts.getFullYear() + " "
+			+ ts.getHours() + ":" + ts.getMinutes() + ":" + ts.getSeconds();
+		}
 	.contentItem
 		.contentItemHeader
 			|Add new page
@@ -30,10 +35,10 @@ block content
 									=page.Username
 								td
 									script(type='text/javascript').
-										var created= new Date("#{page.Created}");
-										document.write(created)
+										document.write(formatTimestamp(new Date("#{page.Created}")));
 								td
-									=page.Updated
+									script(type='text/javascript').
+										document.write(formatTimestamp(new Date("#{page.Created}")));
 								td
 									a(href="/manage/pages/" + page.PageID) Edit
 								td

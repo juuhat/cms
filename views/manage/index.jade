@@ -1,4 +1,47 @@
 extends layout
 
 block content
-	| Control Panel Index
+	.contentItem
+		.contentItemHeader
+			|Page loads
+		canvas(id="canvas", height="450", width="800")
+	
+	script(src="/static/javascripts/chart.js")
+	script(type='text/javascript').
+		function initChart(labels, loads) {
+			var barChartData = {
+				labels : labels,
+				datasets : [
+					{
+						fillColor : "rgba(220,220,220,0.5)",
+						strokeColor : "rgba(220,220,220,1)",
+						data : loads
+					}
+				]
+			}
+
+			var options = {
+				scaleOverlay : true,
+				scaleOverride : true,
+				scaleSteps : 10,
+				//Number - The value jump in the hard coded scale
+				scaleStepWidth : Math.max.apply(null, loads)/10,
+				//Number - The scale starting value
+				scaleStartValue : 0
+			}
+
+			var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData, options);
+		}
+
+	!= "<script type='text/javascript'>"
+	!= "var labels = [];"
+	!= "var loads = [];"
+	- each page in pages
+		!= "labels.push('" + page.Title + "');"
+		!= "loads.push(" + page.Loads + ");"
+	!= "initChart(labels, loads);"
+	!= "</script>"
+
+
+
+		

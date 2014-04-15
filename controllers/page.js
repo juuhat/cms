@@ -13,9 +13,7 @@ exports.show = function(req, res) {
 					res.render('page', {title: "404", text: "Page not found", navItems: navData});
 				}
 			});
-
-
-
+			
 	});
 
 }

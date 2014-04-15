@@ -4,7 +4,11 @@ var link = require('../models/link');
 
 exports.index = function(req, res) {
 	console.log(req.session.user.username);
-	res.render('manage/index');
+	
+	page.getAllPages(function(pagesExists, pagesData) {
+		res.render('manage/index', {pages: pagesData});
+	});
+
 };
 
 exports.pages = function(req, res) {
