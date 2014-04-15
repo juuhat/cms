@@ -1,7 +1,7 @@
 var connection = require('../controllers/database').connection;
 
 exports.getAllLinks = function (callback) {
-    var sql = "SELECT * FROM link INNER JOIN page ON link.PageID = page.PageID;";
+    var sql = "SELECT * FROM Link INNER JOIN Page ON Link.PageID = Page.PageID;";
 
     connection.query(sql, function (err, result) {
 
@@ -22,7 +22,7 @@ exports.getAllLinks = function (callback) {
 
 exports.newLink = function(path, pageID, callback) {
 
-    var sql = "INSERT INTO link (Path, PageID) VALUES ('" + path + "', '" + pageID + "');";
+    var sql = "INSERT INTO Link (Path, PageID) VALUES ('" + path + "', '" + pageID + "');";
 
     console.log(sql);
 
@@ -39,7 +39,7 @@ exports.newLink = function(path, pageID, callback) {
 
 exports.removeLink = function(pathID, callback) {
 
-    var sql = "DELETE FROM link WHERE link.PathID = " + pathID + ";";
+    var sql = "DELETE FROM Link WHERE Link.PathID = " + pathID + ";";
 
     console.log(sql);
 

@@ -1,7 +1,7 @@
 var connection = require('../controllers/database').connection;
 
 exports.getNavbar = function (callback) {
-	var sql = "SELECT navbar.Title, navbar.Url, navbar.Place, navbar.NavbarID FROM navbar ORDER BY navbar.Place;";
+	var sql = "SELECT Navbar.Title, Navbar.Url, Navbar.Place, Navbar.NavbarID FROM Navbar ORDER BY Navbar.Place;";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -24,7 +24,7 @@ exports.getNavbar = function (callback) {
 }
 
 exports.addNavbarItem = function(title, url, callback) {
-    var sql = "INSERT INTO navbar (Place, Title, Url) SELECT MAX(Place) + 1, '" + title + "', '" + url + "' FROM navbar;";
+    var sql = "INSERT INTO Navbar (Place, Title, Url) SELECT MAX(Place) + 1, '" + title + "', '" + url + "' FROM Navbar;";
 
     console.log(sql);
 
@@ -41,7 +41,7 @@ exports.addNavbarItem = function(title, url, callback) {
 
 exports.saveNavbarItemPlace = function(navbarID, place, callback) {
     //var sql = "UPDATE navbar SET Place='" + place + ", Title='" + title + "' WHERE NavbarID='" + navbarID + "';";
-    var sql = "UPDATE navbar SET Place='" + place + "' WHERE NavbarID='" + navbarID + "';";
+    var sql = "UPDATE Navbar SET Place='" + place + "' WHERE NavbarID='" + navbarID + "';";
 
     console.log(sql);
 
@@ -57,7 +57,7 @@ exports.saveNavbarItemPlace = function(navbarID, place, callback) {
 }
 
 exports.saveNavbarItemContent = function(navbarID, title, url, callback) {
-    var sql = "UPDATE navbar SET Title='" + title + "', Url='" + url + "' Where NavbarID='" + navbarID + "';";
+    var sql = "UPDATE Navbar SET Title='" + title + "', Url='" + url + "' WHERE NavbarID='" + navbarID + "';";
 
     console.log(sql);
 
@@ -72,7 +72,7 @@ exports.saveNavbarItemContent = function(navbarID, title, url, callback) {
 }
 
 exports.removeNavbarItem = function(navbarID, callback) {
-    var sql = "DELETE FROM navbar WHERE NavbarID=" + navbarID + ";";
+    var sql = "DELETE FROM Navbar WHERE NavbarID=" + navbarID + ";";
 
     connection.query(sql, function (err, result) {
         if (err) {

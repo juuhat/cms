@@ -2,7 +2,7 @@
 
 //search page with path
 exports.getPageByPath = function (path, callback) {
-	var sql = "SELECT * FROM link INNER JOIN page ON link.PageID=page.PageID WHERE link.Path='" + path + "';";
+	var sql = "SELECT * FROM Link INNER JOIN Page ON Link.PageID=Page.PageID WHERE Link.Path='" + path + "';";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -24,7 +24,7 @@ exports.getPageByPath = function (path, callback) {
 }
 
 exports.getPageByID = function (id, callback) {
-    var sql = "SELECT * FROM page WHERE PageID='" + id + "';";
+    var sql = "SELECT * FROM Page WHERE PageID='" + id + "';";
     console.log(sql);
     connection.query(sql, function (err, result) {
 
@@ -45,7 +45,7 @@ exports.getPageByID = function (id, callback) {
 }
 
 exports.getAllPages = function (callback) {
-    var sql = "SELECT * FROM page INNER JOIN user ON page.UserID=user.UserID;";
+    var sql = "SELECT * FROM Page INNER JOIN User ON Page.UserID=User.UserID;";
 
     connection.query(sql, function (err, result) {
 
@@ -66,7 +66,7 @@ exports.getAllPages = function (callback) {
 }
 
 exports.updatePage = function(id, title, content, callback) {
-    var sql = "UPDATE page SET Title='" + title + "', Content='" + content + "', Updated=CURRENT_TIMESTAMP WHERE PageID='" + id + "';";
+    var sql = "UPDATE Page SET Title='" + title + "', Content='" + content + "', Updated=CURRENT_TIMESTAMP WHERE PageID='" + id + "';";
 
     console.log(sql);
 
@@ -81,7 +81,7 @@ exports.updatePage = function(id, title, content, callback) {
 }
 
 exports.newPage = function(title, content, userId, callback) {
-    var sql = "INSERT INTO page (Title, Content, UserID, Created, Updated) VALUES ('" + title + "', '" + content + "', '" + userId + "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
+    var sql = "INSERT INTO Page (Title, Content, UserID, Created, Updated) VALUES ('" + title + "', '" + content + "', '" + userId + "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
 
     console.log(sql);
 
@@ -98,7 +98,7 @@ exports.newPage = function(title, content, userId, callback) {
 
 exports.removePage = function(id, callback) {
 
-    var sql = "DELETE FROM page WHERE PageID='" + id + "';";
+    var sql = "DELETE FROM Page WHERE PageID='" + id + "';";
 
     console.log(sql);
 
@@ -115,7 +115,7 @@ exports.removePage = function(id, callback) {
 
 
 exports.updatePageLoads = function(id, callback) {
-    var sql = "UPDATE page SET Loads=Loads+1 WHERE PageID='" + id + "';";
+    var sql = "UPDATE Page SET Loads=Loads+1 WHERE PageID='" + id + "';";
 
     console.log(sql);
 
