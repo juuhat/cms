@@ -10,7 +10,7 @@ var hash = function (pass, salt) {
 };
 
 exports.getUser = function (username, password, callback) {
-	var sql = "SELECT * FROM User WHERE Username='" + username + "' LIMIT 1;";
+	var sql = "SELECT * FROM User WHERE Username=" + connection.escape(username) + " LIMIT 1;";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -40,7 +40,7 @@ exports.addUser = function (username, password, callback) {
 
     var hash = bcrypt.hashSync(password);
 
-	var sql = "INSERT INTO User (username, password) VALUES ('" + username + "', '" + hash+ "');";
+	var sql = "INSERT INTO User (username, password) VALUES (" + connection.escape(username) + ", " + connection.escape(hash) + ");";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {
@@ -57,7 +57,7 @@ exports.addUser = function (username, password, callback) {
 
 exports.authAttempt = function (username, password, callback) {
 
-	var sql = "SELECT * FROM User WHERE Username='" + username + "';";
+	var sql = "SELECT * FROM User WHERE Username=" + connection.escape(username) + ";";
 	console.log(sql);
 
 	connection.query(sql, function (err, result) {

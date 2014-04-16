@@ -22,7 +22,7 @@ exports.getAllLinks = function (callback) {
 
 exports.newLink = function(path, pageID, callback) {
 
-    var sql = "INSERT INTO Link (Path, PageID) VALUES ('" + path + "', '" + pageID + "');";
+    var sql = "INSERT INTO Link (Path, PageID) VALUES (" + connection.escape(path) + ", '" + connection.escape(pageID) + "');";
 
     console.log(sql);
 
@@ -39,7 +39,7 @@ exports.newLink = function(path, pageID, callback) {
 
 exports.removeLink = function(pathID, callback) {
 
-    var sql = "DELETE FROM Link WHERE Link.PathID = " + pathID + ";";
+    var sql = "DELETE FROM Link WHERE Link.PathID = " + connection.escape(pathID) + ";";
 
     console.log(sql);
 
