@@ -4,7 +4,7 @@ block content
 	script(type='text/javascript').
 		function formatTimestamp(ts) {
 			return ts.getDate() + "." + ts.getMonth() + "." + ts.getFullYear() + " "
-			+ ts.getHours() + ":" + ts.getMinutes() + ":" + ts.getSeconds();
+			+ ts.getHours() + ":" + (ts.getMinutes()<10?'0':'') + ts.getMinutes() + ":" + (ts.getSeconds()<10?'0':'') + ts.getSeconds();
 		}
 	.contentItem
 		.contentItemHeader
@@ -38,7 +38,7 @@ block content
 										document.write(formatTimestamp(new Date("#{page.Created}")));
 								td
 									script(type='text/javascript').
-										document.write(formatTimestamp(new Date("#{page.Created}")));
+										document.write(formatTimestamp(new Date("#{page.Updated}")));
 								td
 									a(href="/manage/pages/" + page.PageID) Edit
 								td
