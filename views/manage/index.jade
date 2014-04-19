@@ -36,9 +36,10 @@ block content
 	!= "<script type='text/javascript'>"
 	!= "var labels = [];"
 	!= "var loads = [];"
-	- each page in pages
-		!= "labels.push('" + page.Title + "');"
-		!= "loads.push(" + page.Loads + ");"
+	if pages != null
+		- each page in pages
+			!= "labels.push('" + page.Title + "');"
+			!= "loads.push(" + page.Loads + ");"
 	!= "initChart(labels, loads);"
 	!= "</script>"
 

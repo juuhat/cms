@@ -59,6 +59,7 @@ app.get('/manage/links', manage.links);
 app.get('/manage/navbar', manage.navbar);
 app.post('/manage/navbar/remove', manage.removeNavbarItem);
 app.get('/manage/users', manage.users);
+app.post('/manage/users/add', manage.addUser);
 
 app.post('/manage/savePage', manage.savePage);
 app.post('/manage/addLink', manage.addLink);

@@ -94,13 +94,15 @@ exports.authAttempt = function (username, password, callback) {
 
 exports.getAllUsers = function (callback) {
     var sql = "SELECT * FROM User;";
-
+    console.log(sql);
     connection.query(sql, function (err, result) {
 
         if (err) {
             console.error(err);
             throw err;
         }
+
+        console.log(result.length);
 
         //check if users exist
         if (result.length > 0) {

@@ -13,20 +13,20 @@ block content
 	.contentItem
 		.contentItemHeader
 			|Current pages
-		table
-			thead
-				tr
-					th
-						|Title
-					th
-						|Author
-					th
-						|Created
-					th
-						|Updated
-			tbody
-				if pages != null
-					form(action='/manage/pages/remove', method='post')
+		form(action='/manage/pages/remove', method='post')
+			table
+				thead
+					tr
+						th
+							|Title
+						th
+							|Author
+						th
+							|Created
+						th
+							|Updated
+				tbody
+					if pages != null
 						- each page in pages
 							tr
 								td

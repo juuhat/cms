@@ -1,6 +1,7 @@
 var page = require('../models/page');
 var navbar = require('../models/navbar');
 var link = require('../models/link');
+var user = require('../models/user');
 
 exports.index = function(req, res) {
 	console.log(req.session.user.username);
@@ -73,10 +74,18 @@ exports.saveNavbarItem = function(req, res) {
 }
 
 exports.users = function(req, res) {
-	page.getAllPages(function(usersExists, usersData) {
+	user.getAllUsers(function(usersExists, usersData) {
 		res.render('manage/users', {users: usersData});
 	});
 };
+
+exports.addUser = function(req, res) {
+	
+	user.addUser(req.body.username, req.body.password, function(){
+		res.redirect('/manage/users');
+	});
+
+}
 
 exports.editPage = function(req, res) {
 	page.getPageByID(req.params.id, function(pageExists, pageData) {

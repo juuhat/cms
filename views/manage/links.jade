@@ -26,16 +26,16 @@ block content
 	.contentItem
 		.contentItemHeader
 			|Current links
-		table
-			thead
-				tr
-					th
-						|Linked page
-					th
-						|Path
-			tbody
-				if links != null
-					form(action='/manage/links/remove', method='post')
+		form(action='/manage/links/remove', method='post')
+			table
+				thead
+					tr
+						th
+							|Linked page
+						th
+							|Path
+				tbody
+					if links != null
 						- each link in links
 							tr
 								td
